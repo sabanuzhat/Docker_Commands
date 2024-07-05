@@ -1,0 +1,127 @@
+### Basic Docker Commands
+
+- **docker --version**: Show the Docker version installed.
+- **docker info**: Display system-wide information.
+- **docker help**: Get help on Docker commands.
+
+### Working with Containers
+
+- **docker run**: Run a container from an image.
+  - `docker run [OPTIONS] IMAGE [COMMAND] [ARG...]`
+  - Example: `docker run -d -p 80:80 nginx`
+- **docker ps**: List running containers.
+  - `docker ps -a`: List all containers, including stopped ones.
+- **docker stop**: Stop a running container.
+  - `docker stop CONTAINER_ID`
+- **docker start**: Start a stopped container.
+  - `docker start CONTAINER_ID`
+- **docker restart**: Restart a container.
+  - `docker restart CONTAINER_ID`
+- **docker kill**: Kill a running container.
+  - `docker kill CONTAINER_ID`
+- **docker rm**: Remove a container.
+  - `docker rm CONTAINER_ID`
+  - `docker rm $(docker ps -a -q)`: Remove all stopped containers.
+- **docker rename**: Rename a container.
+  - `docker rename OLD_NAME NEW_NAME`
+- **docker pause**: Pause all processes in a container.
+  - `docker pause CONTAINER_ID`
+- **docker unpause**: Unpause all processes in a container.
+  - `docker unpause CONTAINER_ID`
+
+### Working with Images
+
+- **docker images**: List images.
+- **docker pull**: Pull an image from a registry.
+  - `docker pull IMAGE_NAME`
+- **docker push**: Push an image to a registry.
+  - `docker push IMAGE_NAME`
+- **docker build**: Build an image from a Dockerfile.
+  - `docker build -t IMAGE_NAME .`
+- **docker commit**: Create a new image from a container’s changes.
+  - `docker commit CONTAINER_ID IMAGE_NAME`
+- **docker rmi**: Remove an image.
+  - `docker rmi IMAGE_NAME`
+  - `docker rmi $(docker images -q)`: Remove all images.
+- **docker tag**: Tag an image into a repository.
+  - `docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]`
+- **docker history**: Show the history of an image.
+  - `docker history IMAGE_NAME`
+
+### Network Management
+
+- **docker network ls**: List networks.
+- **docker network create**: Create a new network.
+  - `docker network create NETWORK_NAME`
+- **docker network rm**: Remove a network.
+  - `docker network rm NETWORK_NAME`
+- **docker network inspect**: Inspect a network.
+  - `docker network inspect NETWORK_NAME`
+- **docker network connect**: Connect a container to a network.
+  - `docker network connect NETWORK_NAME CONTAINER_ID`
+- **docker network disconnect**: Disconnect a container from a network.
+  - `docker network disconnect NETWORK_NAME CONTAINER_ID`
+
+### Volume Management
+
+- **docker volume ls**: List volumes.
+- **docker volume create**: Create a volume.
+  - `docker volume create VOLUME_NAME`
+- **docker volume rm**: Remove a volume.
+  - `docker volume rm VOLUME_NAME`
+- **docker volume inspect**: Inspect a volume.
+  - `docker volume inspect VOLUME_NAME`
+
+### Docker Compose
+
+- **docker-compose up**: Create and start containers.
+  - `docker-compose up -d`: Detached mode.
+- **docker-compose down**: Stop and remove containers, networks, images, and volumes.
+- **docker-compose ps**: List containers.
+- **docker-compose logs**: View output from containers.
+- **docker-compose build**: Build or rebuild services.
+- **docker-compose start**: Start services.
+  - `docker-compose start SERVICE_NAME`
+- **docker-compose stop**: Stop services.
+  - `docker-compose stop SERVICE_NAME`
+- **docker-compose restart**: Restart services.
+  - `docker-compose restart SERVICE_NAME`
+- **docker-compose pull**: Pull service images.
+  - `docker-compose pull SERVICE_NAME`
+
+### Miscellaneous Commands
+
+- **docker exec**: Run a command in a running container.
+  - `docker exec -it CONTAINER_ID COMMAND`
+  - Example: `docker exec -it CONTAINER_ID /bin/bash`
+- **docker logs**: Fetch the logs of a container.
+  - `docker logs CONTAINER_ID`
+- **docker inspect**: Return low-level information on Docker objects.
+  - `docker inspect CONTAINER_ID or IMAGE_NAME`
+- **docker cp**: Copy files/folders between a container and the local filesystem.
+  - `docker cp CONTAINER_ID:/path/to/file /host/path`
+  - `docker cp /host/path CONTAINER_ID:/path/to/file`
+- **docker diff**: Inspect changes to files or directories on a container’s filesystem.
+  - `docker diff CONTAINER_ID`
+- **docker stats**: Display a live stream of container(s) resource usage statistics.
+  - `docker stats`
+- **docker top**: Display the running processes of a container.
+  - `docker top CONTAINER_ID`
+- **docker prune**: Remove unused data.
+  - `docker system prune`: Remove all unused containers, networks, images (both dangling and unreferenced), and optionally, volumes.
+  - `docker container prune`: Remove all stopped containers.
+  - `docker volume prune`: Remove all unused volumes.
+  - `docker network prune`: Remove all unused networks.
+  - `docker image prune`: Remove unused images.
+
+### Advanced Commands
+
+- **docker save**: Save one or more images to a tar archive.
+  - `docker save -o OUTPUT_FILE IMAGE_NAME`
+- **docker load**: Load an image from a tar archive.
+  - `docker load -i INPUT_FILE`
+- **docker export**: Export a container’s filesystem as a tar archive.
+  - `docker export -o OUTPUT_FILE CONTAINER_ID`
+- **docker import**: Import the contents from a tarball to create a filesystem image.
+  - `docker import TAR_FILE REPOSITORY[:TAG]`
+
